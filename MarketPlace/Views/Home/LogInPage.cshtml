@@ -1,0 +1,160 @@
+﻿﻿@model MarketPlace.Models.UserInfoVM
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>LoginPage</title>
+    <style>
+
+        body {
+            background-image: url('https://s2.loli.net/2022/03/31/3WMq4TukiZOtS2A.png');
+            background-color: #cccccc;
+        }
+
+        #login_frame {
+            width: 500px;
+            height: 300px;
+            padding: 13px;
+            position: absolute;
+            left: 50%;
+            top: 70%;
+            margin-left: -300px;
+            margin-top: -300px;
+            background-color: rgba(240, 255, 255, 0.5);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        form p > * {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        #image_logo {
+            margin-top: 22px;
+        }
+
+        .label_input {
+            font-size: 14px;
+            width: 65px;
+            height: 28px;
+            line-height: 28px;
+            text-align: center;
+            color: white;
+            background-color: #3CD8FF;
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+        }
+
+        .text_field {
+            width: 278px;
+            height: 28px;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+            border: 0;
+        }
+
+        #btn_signup {
+            font-size: 14px;
+            width: 80px;
+            height: 28px;
+            line-height: 28px;
+            text-align: center;
+            color: white;
+            background-color: #3BD9FF;
+            border-radius: 6px;
+            border: 0;
+            float: right;
+        }
+
+        #btn_login {
+            font-size: 14px;
+            width: 80px;
+            height: 28px;
+            line-height: 28px;
+            text-align: center;
+            color: white;
+            background-color: #3BD9FF;
+            border-radius: 6px;
+            border: 0;
+            float: center;
+        }
+
+        #forget_pwd {
+            font-size: 12px;
+            color: white;
+            text-decoration: none;
+            position: relative;
+            float: right;
+            top: 5px;
+        }
+
+            #forget_pwd:hover {
+                color: blue;
+                text-decoration: underline;
+            }
+
+        #login_control {
+            padding: 13px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div>
+        @Html.ActionLink("Sign Up", "SignUpPage")
+    </div>
+    <div>
+        <div id="login_frame">
+
+            @Scripts.Render("~/bundles/jquery")
+            @Scripts.Render("~/bundles/jqueryval")
+
+
+            @using (Html.BeginForm("LogInPage", "Home", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    <h1>Buliding Product Selection Platform</h1>
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+
+
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" id="btn_login" value="Log In" class="btn btn-default" />
+                        </div>
+                    </div>
+
+                </div>
+            }
+        </div>
+    </div>
+
+
+</body>
+</html>
